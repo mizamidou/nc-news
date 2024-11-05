@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
 import { getArticle } from "../../api";
+import { useParams } from "react-router-dom";
 
-function ArticlePage({ article_id }) {
-  const [article, setArticle] = useState([]);
+function ArticlePage() {
+  const [article, setArticle] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const { article_id } = useParams();
+  console.log(article_id);
 
   useEffect(
     () => {
-      getArticle(article_id).then(response => {
-        setArticle(body.article);
+      getArticle(article_id).then(fetchedArticle => {
+        setArticle(fetchedArticle);
         setIsLoading(false);
       });
     },
@@ -20,7 +23,7 @@ function ArticlePage({ article_id }) {
   }
   return (
     <div className="article-container">
-      <h1 key={(article_id = 2)}>
+      <h1>
         {article.title}
       </h1>
       <p>

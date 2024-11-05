@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getArticles } from "../../api";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [listOfArticles, setListOfArticles] = useState([]);
@@ -23,9 +24,11 @@ function HomePage() {
           return (
             <li key={article.article_id}>
               <div className="article-title">
-                <h1>
-                  {article.title}
-                </h1>
+                <Link to={`/articles/${article.article_id}`}>
+                  <h1>
+                    {article.title}
+                  </h1>
+                </Link>
               </div>
             </li>
           );
