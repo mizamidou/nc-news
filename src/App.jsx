@@ -14,7 +14,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/articlepage" element={<ArticlePage />} />
+        <Route path="/articles/:article_id" element={<ArticlePage />} />
         <Route path="/userform" element={<UserForm />} />
       </Routes>
     </div>
