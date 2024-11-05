@@ -12,16 +12,16 @@ const getArticles = () => {
     });
 };
 
-const getArticle = () => {
+const getArticle = article_id => {
   return axios
-    .get("https://backend-nc-2024.onrender.com/api/articles/:article_id")
+    .get(`https://backend-nc-2024.onrender.com/api/articles/${article_id}`)
     .then(response => {
-      console.log(response.data);
-      return response.data;
+      console.log(response.body.article);
+      return response.body.article;
     })
     .catch(error => {
       console.log(error);
     });
 };
 
-export default (getArticles, getArticle);
+export { getArticles, getArticle };

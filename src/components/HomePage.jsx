@@ -1,15 +1,20 @@
 import { useState, useEffect } from "react";
-import getArticles from "../../api";
+import { getArticles } from "../../api";
 
 function HomePage() {
   const [listOfArticles, setListOfArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getArticles().then(articles => {
       setListOfArticles(articles);
+      setIsLoading(false);
     });
   }, []);
-  // console.log(listOfArticles);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="articles-container">
