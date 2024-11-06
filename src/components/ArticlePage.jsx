@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getArticle } from "../../api";
 import { useParams } from "react-router-dom";
 import CommentsLoading from "./CommentsLoading";
+import Voting from "./Voting";
 
 function ArticlePage() {
   const [article, setArticle] = useState();
@@ -30,10 +31,8 @@ function ArticlePage() {
       <p>
         {article.body}- {article.author}
       </p>
-      <p>
-        {article.votes}
-      </p>
       <CommentsLoading />
+      <Voting article_id={article_id} itinialVotes={article.votes} />
     </div>
   );
 }
