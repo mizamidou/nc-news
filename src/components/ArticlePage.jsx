@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { getArticle } from "../../api";
 import { useParams } from "react-router-dom";
+import CommentsLoading from "./CommentsLoading";
 
 function ArticlePage() {
   const [article, setArticle] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
-  console.log(article_id);
 
   useEffect(
     () => {
@@ -26,9 +26,14 @@ function ArticlePage() {
       <h1>
         {article.title}
       </h1>
+      <img src={article.article_img_url} />
       <p>
-        {article.body}
+        {article.body}- {article.author}
       </p>
+      <p>
+        {article.votes}
+      </p>
+      <CommentsLoading />
     </div>
   );
 }
