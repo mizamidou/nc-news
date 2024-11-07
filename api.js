@@ -15,7 +15,6 @@ const getArticle = article_id => {
   return axios
     .get(`https://backend-nc-2024.onrender.com/api/articles/${article_id}`)
     .then(response => {
-      console.log(response.data.article);
       return response.data.article;
     })
     .catch(error => {
@@ -49,4 +48,31 @@ const updatedVotes = (article_id, voteChange) => {
     });
 };
 
-export { getArticles, getArticle, getComments, updatedVotes };
+const postedComment = (article_id, newComm) => {
+  return axios
+    .post(
+      `https://backend-nc-2024.onrender.com/api/articles/${article_id}/comments`,
+      {
+        author: "cooljmessy",
+        body: newComm
+      }
+    )
+    .then(response => {
+      console.log("Thats the response:", response);
+      return response.data.comments;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+const deletedComment = () => {};
+
+export {
+  getArticles,
+  getArticle,
+  getComments,
+  updatedVotes,
+  postedComment,
+  deletedComment
+};

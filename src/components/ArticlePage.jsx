@@ -1,13 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getArticle } from "../../api";
 import { useParams } from "react-router-dom";
 import CommentsLoading from "./CommentsLoading";
 import Voting from "./Voting";
+import AddComment from "./AddComment";
+import { CreateCommentContext } from "./ContextReact";
 
 function ArticlePage() {
-  const [article, setArticle] = useState();
+  const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
+  const { newComm } = useContext(CreateCommentContext);
 
   useEffect(
     () => {
@@ -33,6 +36,7 @@ function ArticlePage() {
       </p>
       <CommentsLoading />
       <Voting article_id={article_id} itinialVotes={article.votes} />
+      <AddComment article_id={article_id} newComment={newComm} />
     </div>
   );
 }

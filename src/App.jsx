@@ -5,9 +5,10 @@ import Header from "../src/components/Header";
 import ArticlePage from "../src/components/ArticlePage";
 import UserForm from "../src/components/UserForm";
 import HomePage from "../src/components/HomePage";
+import { CreateCommentProvider } from "../src/components/ContextReact";
 
 function App() {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState("");
 
   return (
     <div className="app">
