@@ -18,6 +18,7 @@ function App() {
         <Route path="/articles/:article_id" element={<ArticlePage />} />
         <Route path="/userform" element={<UserForm />} />
       </Routes>
+      >
     </div>
   );
 }

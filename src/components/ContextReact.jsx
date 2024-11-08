@@ -8,8 +8,16 @@ export const CreateCommentProvider = ({ children }) => {
   const handleNewComment = newComm => {
     setNewComm(newComm);
   };
+
+  const deleteComment = comment_id => {
+    setNewComm(comments =>
+      comments.filter(comment => comment.comment_id !== comment_id)
+    );
+  };
   return (
-    <CreateCommentContext.Provider value={{ newComm, handleNewComment }}>
+    <CreateCommentContext.Provider
+      value={{ newComm, handleNewComment, deleteComment }}
+    >
       {children}
     </CreateCommentContext.Provider>
   );

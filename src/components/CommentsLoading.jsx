@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { getComments } from "../../api";
 import { useParams } from "react-router-dom";
+import DeletedComment from "./DeletedComment";
 
 function CommentsLoading() {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
+  const { comment_id } = useParams();
 
   useEffect(
     () => {
@@ -31,6 +33,7 @@ function CommentsLoading() {
               {comment.body}-{comment.author}
             </ul>
           );
+          <DeletedComment article_id={article_id} comment_id={comment_id} />;
         })}
       </ul>
     </div>
