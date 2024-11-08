@@ -58,7 +58,6 @@ const postedComment = (article_id, newComm) => {
       }
     )
     .then(response => {
-      console.log("Thats the response:", response);
       return response.data.comments;
     })
     .catch(error => {
@@ -66,7 +65,17 @@ const postedComment = (article_id, newComm) => {
     });
 };
 
-const deletedComment = () => {};
+const deletedComment = (article_id, comment_id) => {
+  console.log(comment_id);
+  return axios
+    .delete(`https://backend-nc-2024.onrender.com/api/comments/${comment_id}`)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+};
 
 export {
   getArticles,

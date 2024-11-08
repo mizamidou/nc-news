@@ -10,17 +10,14 @@ function AddComment({ article_id }) {
 
   const sendAMessage = () => {
     if (newCommentPosted) return;
-    console.log("Receiving a new comm:", article_id);
     postedComment(article_id, newComm)
       .then(postedComment => {
-        console.log("Posted a newComm:", article_id);
         setNewComm("");
         handleNewComment(postedComment);
         setNewCommentPosted(true);
         setError(null);
       })
       .catch(error => {
-        console.log("That's an errror:", error);
         setError("Failed comment to be posted");
       });
   };
